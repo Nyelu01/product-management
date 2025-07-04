@@ -1,11 +1,4 @@
-import {
-  IsNotEmpty,
-  IsString,
-  IsNumber,
-  IsOptional,
-  Min,
-  IsDecimal,
-} from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsDecimal } from 'class-validator';
 
 export class CreateProductDto {
   @IsString({ message: 'name should be a valid string' })
@@ -18,9 +11,4 @@ export class CreateProductDto {
   @IsDecimal({ decimal_digits: '2' })
   @IsNotEmpty()
   price: string;
-
-  @IsNumber({}, { message: 'Quantity should be a number' })
-  @IsNotEmpty()
-  @Min(1)
-  quantity: number;
 }

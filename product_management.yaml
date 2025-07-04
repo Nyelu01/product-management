@@ -1,0 +1,186 @@
+type: collection.insomnia.rest/5.0
+name: product_management
+meta:
+  id: wrk_7814f5fa883b463482c530d0c4699545
+  created: 1751573415710
+  modified: 1751573415710
+  description: ""
+collection:
+  - name: store
+    meta:
+      id: fld_1a857fe7b5da428a8519f104442713d3
+      created: 1751573438038
+      modified: 1751573438038
+      sortKey: -1751573438038
+      description: ""
+    children:
+      - url: "{{ _.baseUrl }}stores"
+        name: create
+        meta:
+          id: req_cccb34542cb04f259d13fa29459e22b9
+          created: 1751574692016
+          modified: 1751575053980
+          isPrivate: false
+          description: ""
+          sortKey: -1751574692016
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "Main Store - Arusha",
+              "region": "Arusha",
+              "district": "Arusha Mjini",
+              "isActive": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}stores"
+        name: Get All
+        meta:
+          id: req_41a286ad5cd947aa882112b4f9bebccb
+          created: 1751575020718
+          modified: 1751575031237
+          isPrivate: false
+          description: ""
+          sortKey: -1751574076170.5
+        method: GET
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "Main Store - Arusha",
+              "region": "Arusha",
+              "district": "Arusha Mjini",
+              "isActive": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: product
+    meta:
+      id: fld_7e59946de02b40ef94d945c4b214b833
+      created: 1751573451394
+      modified: 1751573451394
+      sortKey: -1751573451394
+      description: ""
+    children:
+      - url: "{{ _.baseUrl }}inventories"
+        name: create
+        meta:
+          id: req_813b8159efac446c968e1f90c4235afa
+          created: 1751573460325
+          modified: 1751613026459
+          isPrivate: false
+          description: ""
+          sortKey: -1751573460325
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+                "storeId": 2,
+                "products": [
+                    {
+                        "name": "Engine Oil Premium 5W-30",
+                        "price": "42000.00",
+                        "description": "Fully synthetic premium engine oil for high-performance vehicles."
+                    },
+                    {
+                        "name": "Gear Oil Premium 5W-30",
+                        "price": "50000.00",
+                        "description": "Fully synthetic premium gear oil for high-performance vehicles."
+                    }
+                ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}products"
+        name: "Get All "
+        meta:
+          id: req_cd7a5850440045ecaac49b6fdd03a897
+          created: 1751614107366
+          modified: 1751614131760
+          isPrivate: false
+          description: ""
+          sortKey: -1751573460225
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}products/c9248743-38b3-4063-9fe3-4bb0b3b961fd"
+        name: Get One
+        meta:
+          id: req_6ebd352399c345039b00daffea55e694
+          created: 1751614925698
+          modified: 1751614930675
+          isPrivate: false
+          description: ""
+          sortKey: -1751427114368
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_03a5c734435d5e1303f8201d964bd9d143c36997
+    created: 1751573415741
+    modified: 1751573415741
+environments:
+  name: Base Environment
+  meta:
+    id: env_03a5c734435d5e1303f8201d964bd9d143c36997
+    created: 1751573415730
+    modified: 1751573559699
+    isPrivate: false
+  data:
+    baseUrl: http://localhost:3000/

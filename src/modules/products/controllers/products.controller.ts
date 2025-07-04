@@ -1,15 +1,16 @@
+import { ProductsService } from '../services/products.service';
+import { CreateProductDto } from '../dto/create-product.dto';
+import { UpdateProductDto } from '../dto/update-product.dto';
 import {
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
-  Patch,
   Param,
-  Delete,
+  ParseUUIDPipe,
+  Patch,
+  Post,
 } from '@nestjs/common';
-import { ProductsService } from './products.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { Product } from '../entities/product.entity';
 
 @Controller('products')
 export class ProductsController {
@@ -21,12 +22,14 @@ export class ProductsController {
   }
 
   @Get()
-  async findAll() {
+  async findAll(): Promise<Product[]> {
     return await this.productsService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ): Promise<Product> {
     return await this.productsService.findOne(id);
   }
 
@@ -36,10 +39,5 @@ export class ProductsController {
     @Body() updateProductDto: UpdateProductDto,
   ) {
     return await this.productsService.update(id, updateProductDto);
-  }
-
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return await this.productsService.remove(id);
   }
 }
